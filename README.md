@@ -34,7 +34,7 @@ This is a robust and scalable Task Management RESTful API built with **Node.js**
 
 ```bash
 git clone https://github.com/oyediranmohammed/task_management_api.git
-cd task-manager-api
+cd task_management_api
 ```
 ### 2. Install Dependencies
 ```bash
