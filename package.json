@@ -1,0 +1,33 @@
+{
+  "name": "task_management_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyediranmohammed/task_management_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyediranmohammed/task_management_api/issues"
+  },
+  "homepage": "https://github.com/oyediranmohammed/task_management_api#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "postman": "^0.2.0"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.1",
+    "nodemailer": "^7.0.3",
+    "sequelize": "^6.37.7"
+  }
+}
