@@ -64,4 +64,4 @@ This project is developed and maintained by:
 
    Mohammed A. Oyediran: oyediranmohammed@gmail.com
 
-   Victoria O. Akinwunmi: victoriaoakinwumi@gmail.com
+   Victoria O. Akinwumi: victoriaoakinwumi@gmail.com
