@@ -65,3 +65,5 @@ This project is developed and maintained by:
    Mohammed A. Oyediran: oyediranmohammed@gmail.com
 
    Victoria O. Akinwumi: victoriaoakinwumi@gmail.com
+
+   Khubaib A. Jimoh: yungsci101@gmail.com
