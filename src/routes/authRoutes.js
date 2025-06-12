@@ -1,18 +1,9 @@
-const express = require('express');
+import express from 'express';
+import { registerUser, loginUser } from '../controllers/authController.js';
+
 const router = express.Router();
 
-const authController = require('../controllers/authController');
-const validate = require('../middlewares/validateMiddleware');
-const { registerSchema, loginSchema } = require('../validations/authValidation');
+router.post('/register', registerUser);
+router.post('/login', loginUser);
 
-// @route   POST /api/auth/register
-// @desc    Register a new user
-// @access  Public
-router.post('/register', validate(registerSchema), authController.register);
-
-// @route   POST /api/auth/login
-// @desc    Login and return JWT
-// @access  Public
-router.post('/login', validate(loginSchema), authController.login);
-
-module.exports = router;
+export default router;
