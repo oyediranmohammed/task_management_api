@@ -46,3 +46,26 @@ export const getUserTasks = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch tasks', error: error.message });
   }
 };
+
+// update a task
+
+export const updateTask = async (req, res) => {
+  try {
+    const task = await Task.findOne({ _id: req.params.id, user: req.user._id });
+
+    if (!task) {
+      return res.status(404).json({ message: 'Task not found or unauthorized' });
+    }
+
+    // Update allowed fields
+    task.title = req.body.title || task.title;
+    task.description = req.body.description || task.description;
+    task.dueDate = req.body.dueDate || task.dueDate;
+    task.completed = req.body.completed !== undefined ? req.body.completed : task.completed;
+
+    const updatedTask = await task.save();
+    res.status(200).json(updatedTask);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to update task', error: error.message });
+  }
+};

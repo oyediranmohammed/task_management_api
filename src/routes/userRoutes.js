@@ -7,3 +7,4 @@ const userRouter = express.Router();
 userRouter.put('/profile', protect, updateUserProfile);
 
 export default userRouter;
+
