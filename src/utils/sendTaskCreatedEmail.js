@@ -8,6 +8,9 @@ const sendTaskCreatedEmail = async (toEmail, task) => {
         user: process.env.EMAIL_FROM,
         pass: process.env.EMAIL_PASS,
       },
+      tls: {
+    rejectUnauthorized: false, // ✅ allow self-signed certs
+  },
     });
 
     const mailOptions = {
