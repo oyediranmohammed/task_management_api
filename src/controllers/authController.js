@@ -1,5 +1,6 @@
 // controllers/authController.js
 import jwt from 'jsonwebtoken';
+import { validationResult } from 'express-validator';
 import User from '../models/user.js';
 
 const generateToken = (userId) => {
@@ -10,6 +11,11 @@ const generateToken = (userId) => {
 
 // @desc    Register new user
 export const registerUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { name, email, password } = req.body;
 
   try {
@@ -32,6 +38,11 @@ export const registerUser = async (req, res) => {
 
 // @desc    Login user
 export const loginUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { email, password } = req.body;
 
   try {
@@ -51,6 +62,7 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Login failed', error: error.message });
   }
 };
+
 // @desc    Update user profile
 export const updateUserProfile = async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -70,6 +82,19 @@ export const updateUserProfile = async (req, res) => {
       name: user.name,
       email: user.email,
       token: jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' }),
+    });
+  } else {
+    res.status(404).json({ message: 'User not found' });
+  }
+};
+
+export const getUserProfile = async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
     });
   } else {
     res.status(404).json({ message: 'User not found' });
